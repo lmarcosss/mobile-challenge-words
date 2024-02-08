@@ -1,5 +1,5 @@
 import React from 'react';
-import {act, render, userEvent, waitFor} from '@testing-library/react-native';
+import {render, userEvent, waitFor} from '@testing-library/react-native';
 import {WordsList} from './words-list.component';
 
 const words = [
