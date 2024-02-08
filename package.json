@@ -7,7 +7,7 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest --verbose"
   },
   "dependencies": {
     "@react-navigation/material-top-tabs": "6.6.5",
