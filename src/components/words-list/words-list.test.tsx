@@ -1,6 +1,6 @@
 import React from 'react';
 import {render, userEvent, waitFor} from '@testing-library/react-native';
-import {WordsList} from './words-list.component';
+import {WordsList} from '@components';
 
 const words = [
   'apple',

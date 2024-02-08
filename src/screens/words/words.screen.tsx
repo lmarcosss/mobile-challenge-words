@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {View} from 'react-native';
 import wordsData from '../../core/words';
+import {WordsList} from '@components';
 
 import style from './words.style';
-import {WordsList} from '@components';
 
 const itensPerPage = 15;
 
