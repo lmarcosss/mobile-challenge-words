@@ -2,11 +2,11 @@ import React from 'react';
 
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {WordsScreen, FavoritesScreen, HistoryScreen} from '@screens';
+import {FavoritesScreen, HistoryScreen, WordsScreen} from '@screens';
 
 const Tab = createMaterialTopTabNavigator();
 
-export function TabNavigation() {
+export function TabNavigator() {
   const insets = useSafeAreaInsets();
 
   return (

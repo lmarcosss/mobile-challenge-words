@@ -16,6 +16,8 @@ module.exports = {
         alias: {
           '^@components': './src/components',
           '^@screens': './src/screens',
+          '^@contexts': './src/contexts',
+          '^@types': './src/types',
         },
         extensions: [
           '.js',
