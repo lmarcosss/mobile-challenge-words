@@ -6,7 +6,7 @@ export class WordService extends BaseService {
     super(DICTIONARY_API);
   }
 
-  async get(word: string): Promise<any> {
+  async getWordDetails(word: string): Promise<any> {
     return this.get(`/${word}`);
   }
 }
