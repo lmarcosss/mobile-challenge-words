@@ -17,9 +17,21 @@ export function TabNavigator() {
         paddingLeft: insets.left,
         paddingRight: insets.right,
       }}>
-      <Tab.Screen name="Words" component={WordsScreen} />
-      <Tab.Screen name="History" component={HistoryScreen} />
-      <Tab.Screen name="Favorites" component={FavoritesScreen} />
+      <Tab.Screen
+        name="Words"
+        component={WordsScreen}
+        options={{title: 'Words'}}
+      />
+      <Tab.Screen
+        name="History"
+        component={HistoryScreen}
+        options={{title: 'History'}}
+      />
+      <Tab.Screen
+        name="Favorites"
+        component={FavoritesScreen}
+        options={{title: 'Favorites'}}
+      />
     </Tab.Navigator>
   );
 }
