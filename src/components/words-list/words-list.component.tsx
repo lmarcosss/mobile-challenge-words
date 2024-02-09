@@ -19,6 +19,7 @@ export function WordsList({onLoadMoreItems, words}: WordsListProps) {
       keyExtractor={item => item}
       contentContainerStyle={style.container}
       testID="words-list"
+      showsVerticalScrollIndicator={false}
       renderItem={({item}) => (
         <TouchableOpacity testID="words-list-item">
           <Text style={style.text}>{item}</Text>
