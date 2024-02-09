@@ -6,13 +6,31 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import style from './words-list.style';
+import {useNavigation} from '@react-navigation/core';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {useWordDetailsContext} from '@contexts';
 
 type WordsListProps = {
-  onLoadMoreItems(): void;
+  onLoadMoreItems?(): void;
   words: string[];
 };
 
+type WordListNavigationProps = {
+  WordDetailsModal: undefined;
+};
+
 export function WordsList({onLoadMoreItems, words}: WordsListProps) {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<WordListNavigationProps>>();
+  const {setWord} = useWordDetailsContext();
+
+  const onPress = (word: string) => {
+    setWord(word);
+    navigation.navigate('WordDetailsModal');
+  };
+
+  const hasInfiniteScroll = !!onLoadMoreItems;
+
   return (
     <FlatList
       data={words}
@@ -21,14 +39,18 @@ export function WordsList({onLoadMoreItems, words}: WordsListProps) {
       testID="words-list"
       showsVerticalScrollIndicator={false}
       renderItem={({item}) => (
-        <TouchableOpacity testID="words-list-item">
+        <TouchableOpacity
+          onPress={() => onPress(item)}
+          testID="words-list-item">
           <Text style={style.text}>{item}</Text>
         </TouchableOpacity>
       )}
-      onEndReached={onLoadMoreItems}
-      onEndReachedThreshold={0.1}
-      ListFooterComponent={<ActivityIndicator />}
-      ListFooterComponentStyle={style.loader}
+      onEndReached={hasInfiniteScroll ? onLoadMoreItems : undefined}
+      onEndReachedThreshold={hasInfiniteScroll ? 0.1 : undefined}
+      ListFooterComponent={
+        hasInfiniteScroll ? <ActivityIndicator /> : undefined
+      }
+      ListFooterComponentStyle={hasInfiniteScroll ? style.loader : undefined}
       numColumns={3}
     />
   );

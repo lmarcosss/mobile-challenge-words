@@ -2,14 +2,12 @@ import {StyleSheet, Dimensions} from 'react-native';
 
 const {width} = Dimensions.get('screen');
 
-const margin = width * 0.035;
+const margin = width * 0.04;
 const textWidth = (width - 4 * margin) / 3;
 
 export default StyleSheet.create({
   container: {
     flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   text: {
     borderWidth: 1,
