@@ -1,5 +1,6 @@
+export {WordContextProvider, useWordContext} from './word.context';
 export {
-  WordDetailsContext,
-  WordDetailsContextProvider,
-  useWordDetailsContext,
-} from './word-detail.context';
+  FavoritesContextProvider,
+  useFavoritesContext,
+} from './favorites.context';
+export {HistoryContextProvider, useHistoryContext} from './history.context';

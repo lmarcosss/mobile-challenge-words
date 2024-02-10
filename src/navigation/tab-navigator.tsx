@@ -3,6 +3,7 @@ import React from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {FavoritesScreen, HistoryScreen, WordsScreen} from '@screens';
+import style from './navigator.style';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -16,6 +17,12 @@ export function TabNavigator() {
         paddingBottom: insets.bottom,
         paddingLeft: insets.left,
         paddingRight: insets.right,
+      }}
+      sceneContainerStyle={style.backgroundStyle}
+      screenOptions={{
+        tabBarStyle: style.backgroundStyle,
+        tabBarLabelStyle: style.tabBarLabelStyle,
+        tabBarIndicatorStyle: style.tabBarIndicatorStyle,
       }}>
       <Tab.Screen
         name="Words"
