@@ -18,6 +18,7 @@ module.exports = {
           '^@screens': './src/screens',
           '^@contexts': './src/contexts',
           '^@types': './src/types',
+          '^@core': './src/core',
         },
         extensions: [
           '.js',
