@@ -1,18 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import {View} from 'react-native';
-import wordsData from '../../core/words';
 import {WordsList} from '@components';
+import {newWords} from '@constants';
 
 import style from './words.style';
 
-const itensPerPage = 15;
+const itemsPerPage = 50;
 
 export function WordsScreen() {
   const [words, setWords] = useState<string[]>([]);
   const [page, setPage] = useState(1);
 
   const loadMoreItems = () => {
-    const nextItems = wordsData.slice(words.length, page * itensPerPage);
+    const nextItems = newWords.slice(words.length, page * itemsPerPage);
 
     setWords(prevWords => {
       setPage(previousPage => previousPage + 1);
