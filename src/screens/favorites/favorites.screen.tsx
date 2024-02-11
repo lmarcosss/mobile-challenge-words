@@ -1,10 +1,16 @@
+import {WordsList} from '@components';
+import {useFavoritesContext} from '@contexts';
 import React from 'react';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
+
+import style from './favorites.style';
 
 export function FavoritesScreen() {
+  const {favorites} = useFavoritesContext();
+
   return (
-    <View>
-      <Text>FavoriteScreen</Text>
+    <View style={style.container}>
+      <WordsList words={favorites} listEmptyText="No favorite items" />
     </View>
   );
 }

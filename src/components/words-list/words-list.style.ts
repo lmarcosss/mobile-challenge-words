@@ -1,4 +1,5 @@
 import {StyleSheet, Dimensions} from 'react-native';
+import {colors} from '@constants';
 
 const {width} = Dimensions.get('screen');
 
@@ -9,21 +10,29 @@ export default StyleSheet.create({
   container: {
     flexDirection: 'column',
   },
-  text: {
-    borderWidth: 1,
+  containerText: {
+    backgroundColor: colors.SECONDARY,
+    borderRadius: 5,
     paddingVertical: 12,
     paddingHorizontal: 6,
     width: textWidth,
-    textAlign: 'center',
     marginBottom: 12,
     marginLeft: 6,
     marginRight: 6,
-    borderRadius: 5,
+  },
+  text: {
+    textAlign: 'center',
+    fontWeight: '500',
+    color: colors.SECONDARY_FONT,
   },
   loader: {
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
     marginTop: 12,
+  },
+  emptyText: {
+    textAlign: 'center',
+    color: colors.PRIMARY_FONT,
   },
 });

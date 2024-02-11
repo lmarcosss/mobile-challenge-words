@@ -8,21 +8,26 @@ import {
 import style from './words-list.style';
 import {useNavigation} from '@react-navigation/core';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {useWordDetailsContext} from '@contexts';
+import {useWordContext} from '@contexts';
 
 type WordsListProps = {
   onLoadMoreItems?(): void;
   words: string[];
+  listEmptyText?: string;
 };
 
 type WordListNavigationProps = {
   WordDetailsModal: undefined;
 };
 
-export function WordsList({onLoadMoreItems, words}: WordsListProps) {
+export function WordsList({
+  onLoadMoreItems,
+  words,
+  listEmptyText,
+}: WordsListProps) {
   const navigation =
     useNavigation<NativeStackNavigationProp<WordListNavigationProps>>();
-  const {setWord} = useWordDetailsContext();
+  const {setWord} = useWordContext();
 
   const onPress = (word: string) => {
     setWord(word);
@@ -40,6 +45,7 @@ export function WordsList({onLoadMoreItems, words}: WordsListProps) {
       showsVerticalScrollIndicator={false}
       renderItem={({item}) => (
         <TouchableOpacity
+          style={style.containerText}
           onPress={() => onPress(item)}
           testID="words-list-item">
           <Text style={style.text}>{item}</Text>
@@ -52,6 +58,7 @@ export function WordsList({onLoadMoreItems, words}: WordsListProps) {
       }
       ListFooterComponentStyle={hasInfiniteScroll ? style.loader : undefined}
       numColumns={3}
+      ListEmptyComponent={<Text style={style.emptyText}>{listEmptyText}</Text>}
     />
   );
 }
