@@ -2,14 +2,6 @@ module.exports = {
   presets: ['module:@react-native/babel-preset'],
   plugins: [
     [
-      'module:react-native-dotenv',
-      {
-        envName: 'APP_ENV',
-        moduleName: '@env',
-        path: '.env',
-      },
-    ],
-    [
       'module-resolver',
       {
         root: ['./src'],
@@ -18,7 +10,8 @@ module.exports = {
           '^@screens': './src/screens',
           '^@contexts': './src/contexts',
           '^@types': './src/types',
-          '^@core': './src/core',
+          '^@constants': './src/constants',
+          '^@services': './src/services',
         },
         extensions: [
           '.js',
@@ -32,5 +25,6 @@ module.exports = {
         ],
       },
     ],
+    ['@babel/plugin-proposal-decorators', {legacy: true}],
   ],
 };

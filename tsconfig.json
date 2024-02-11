@@ -6,7 +6,10 @@
       "@components": ["./components"],
       "@screens": ["./screens"],
       "@contexts": ["./contexts"],
-      "@types": ["./types"]
-    }
+      "@types": ["./types"],
+      "@constants": ["./constants"],
+      "@services": ["./services"]
+    },
+    "experimentalDecorators": true
   }
 }
