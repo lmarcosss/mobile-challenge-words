@@ -8,7 +8,7 @@
       "@contexts": ["./contexts"],
       "@types": ["./types"],
       "@constants": ["./constants"],
-      "@services": ["./services"]
+      "@hooks": ["./hooks"]
     },
     "experimentalDecorators": true
   }

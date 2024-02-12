@@ -11,7 +11,7 @@ module.exports = {
           '^@contexts': './src/contexts',
           '^@types': './src/types',
           '^@constants': './src/constants',
-          '^@services': './src/services',
+          '^@hooks': './src/hooks',
         },
         extensions: [
           '.js',

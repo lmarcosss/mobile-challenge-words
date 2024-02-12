@@ -1,5 +1,7 @@
-// include this line for mocking react-native-gesture-handler
+import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/async-storage-mock';
 import 'react-native-gesture-handler/jestSetup';
+
+jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage);
 
 // include this section and the NativeAnimatedHelper section for mocking react-native-reanimated
 jest.mock('react-native-reanimated', () => {
