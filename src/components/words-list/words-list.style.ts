@@ -4,7 +4,7 @@ import {colors} from '@constants';
 const {width} = Dimensions.get('screen');
 
 const margin = width * 0.04;
-const textWidth = (width - 4 * margin) / 3;
+export const textWidth = (width - 4 * margin) / 3;
 
 export default StyleSheet.create({
   container: {

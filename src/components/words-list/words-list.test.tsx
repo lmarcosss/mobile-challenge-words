@@ -1,27 +1,18 @@
 import React from 'react';
 import {render, userEvent, waitFor} from '@testing-library/react-native';
 import {WordsList} from '@components';
+import {newWords} from '@constants';
+// import {words} from '@core';
 
-const words = [
-  'apple',
-  'arrow',
-  'amazing',
-  'avocado',
-  'adventure',
-  'alligator',
-  'acoustic',
-  'animate',
-  'affection',
-  'absorb',
-] as string[];
+const wordsWithTenWords = newWords.slice(0, 10);
 
 describe('WordsList', () => {
   it('render a empty list', () => {
     const onLoadMoreItems = jest.fn();
-    const words = [] as string[];
+    const emptyWordsList = [] as string[];
 
     const {getByTestId, queryByTestId} = render(
-      <WordsList onLoadMoreItems={onLoadMoreItems} words={words} />,
+      <WordsList onLoadMoreItems={onLoadMoreItems} words={emptyWordsList} />,
     );
 
     const flatList = getByTestId('words-list');
@@ -35,7 +26,7 @@ describe('WordsList', () => {
     const onLoadMoreItems = jest.fn();
 
     const {getAllByTestId} = render(
-      <WordsList onLoadMoreItems={onLoadMoreItems} words={words} />,
+      <WordsList onLoadMoreItems={onLoadMoreItems} words={wordsWithTenWords} />,
     );
 
     const wordsListItem = getAllByTestId('words-list-item');
@@ -46,7 +37,7 @@ describe('WordsList', () => {
   it('simulate call onLoadMoreItems function', async () => {
     const onLoadMoreItems = jest.fn();
     const {getByTestId} = render(
-      <WordsList onLoadMoreItems={onLoadMoreItems} words={words} />,
+      <WordsList onLoadMoreItems={onLoadMoreItems} words={wordsWithTenWords} />,
     );
 
     const wordsList = getByTestId('words-list');

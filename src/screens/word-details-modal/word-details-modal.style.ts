@@ -1,13 +1,31 @@
 import {StyleSheet} from 'react-native';
+import {colors} from '@constants';
 
 export default StyleSheet.create({
   container: {padding: 16},
+  containerLoader: {paddingTop: 50},
   wordContent: {
-    backgroundColor: '#7261A3',
+    backgroundColor: colors.SECONDARY,
     borderRadius: 5,
     alignItems: 'center',
-    padding: 32,
+    padding: 24,
   },
-  wordText: {paddingBottom: 8, color: '#fff', fontWeight: '600'},
-  wordPhonetic: {color: '#fff', fontWeight: '600'},
+  text: {
+    fontWeight: '600',
+    fontSize: 20,
+    color: colors.SECONDARY_FONT,
+  },
+  wordText: {
+    paddingBottom: 12,
+  },
+  headerTitle: {
+    color: colors.PRIMARY_FONT,
+  },
+  errorTitle: {
+    textAlign: 'center',
+    fontWeight: '600',
+    fontSize: 16,
+    marginBottom: 5,
+  },
+  errorText: {textAlign: 'center'},
 });
