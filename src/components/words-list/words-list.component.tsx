@@ -4,7 +4,7 @@ import style from './words-list.style';
 import {useNavigation} from '@react-navigation/native';
 import {WordListItem} from './words-list-item.component';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from 'navigation/root.navigator';
+import {RootStackParamListType} from '@types';
 
 type WordsListProps = {
   onLoadMoreItems?(): void;
@@ -19,7 +19,7 @@ export function WordsList({
 }: WordsListProps) {
   const navigation =
     useNavigation<
-      NativeStackNavigationProp<RootStackParamList, 'WordDetailsModal'>
+      NativeStackNavigationProp<RootStackParamListType, 'WordDetailsModal'>
     >();
 
   const onPress = (word: string) => {

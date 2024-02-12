@@ -7,7 +7,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome from 'react-native-vector-icons/FontAwesome6';
 import {useWordDetails} from '@hooks';
 import {colors} from '@constants';
-import {RootStackParamList} from 'navigation/root.navigator';
+import {RootStackParamListType} from '@types';
 
 import style from './word-details-modal.style';
 
@@ -36,7 +36,7 @@ export function WordDetailsModalScreen() {
   const {handleFavoriteWord, favorites} = useFavoritesContext();
   const {setOptions, goBack} = useNavigation();
   const {params} =
-    useRoute<RouteProp<RootStackParamList, 'WordDetailsModal'>>();
+    useRoute<RouteProp<RootStackParamListType, 'WordDetailsModal'>>();
   const {word} = params;
   const {wordDetails, isLoading, isError} = useWordDetails(word);
 

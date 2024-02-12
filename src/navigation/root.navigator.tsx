@@ -1,36 +1,28 @@
 import React from 'react';
-import {TabNavigator} from './tab-navigator';
-import {WordDetailsModalScreen} from '@screens';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {LoginScreen} from '@screens';
+import {MainNavigator} from './main.navigator';
+import {RootStackParamListType} from '@types';
 
-import style from './navigator.style';
-
-const RootStack = createNativeStackNavigator();
+export const RootStack = createNativeStackNavigator<RootStackParamListType>();
 
 export function RootNavigator() {
   return (
     <RootStack.Navigator>
-      <RootStack.Group
-        screenOptions={{
-          contentStyle: style.backgroundStyle,
-          statusBarStyle: 'light',
-        }}>
-        <RootStack.Screen
-          name="TabNavigator"
-          options={{
-            headerShown: false,
-          }}
-          component={TabNavigator}
-        />
-        <RootStack.Screen
-          name="WordDetailsModal"
-          component={WordDetailsModalScreen}
-          options={{
-            presentation: 'modal',
-            headerStyle: style.backgroundStyle,
-          }}
-        />
-      </RootStack.Group>
+      <RootStack.Screen
+        options={{
+          headerShown: false,
+        }}
+        name="MainStack"
+        component={MainNavigator}
+      />
+      <RootStack.Screen
+        name="Login"
+        options={{
+          headerShown: false,
+        }}
+        component={LoginScreen}
+      />
     </RootStack.Navigator>
   );
 }
