@@ -1,19 +1,19 @@
-import {colors} from '@constants';
+import {ColorsEnum} from '@constants';
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   backgroundStyle: {
-    backgroundColor: colors.PRIMARY,
+    backgroundColor: ColorsEnum.PRIMARY,
   },
   headerStyle: {
-    backgroundColor: colors.PRIMARY,
+    backgroundColor: ColorsEnum.PRIMARY,
     alignItems: 'center',
   },
   tabBarIndicatorStyle: {
-    backgroundColor: colors.SECONDARY,
+    backgroundColor: ColorsEnum.SECONDARY,
   },
   tabBarLabelStyle: {
-    color: colors.PRIMARY_FONT,
+    color: ColorsEnum.PRIMARY_FONT,
     fontWeight: '500',
   },
 });

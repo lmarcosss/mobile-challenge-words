@@ -1,43 +1,45 @@
 import {StyleSheet} from 'react-native';
-import {colors} from '@constants';
+import {ColorsEnum} from '@constants';
 
 export default StyleSheet.create({
   container: {padding: 16},
   containerLoader: {paddingTop: 70},
   wordContent: {
-    backgroundColor: colors.SECONDARY,
+    backgroundColor: ColorsEnum.SECONDARY,
     borderRadius: 5,
     alignItems: 'center',
     padding: 24,
   },
   errorContent: {
     margin: 16,
-    justifyContent: 'flex-start',
     alignItems: 'flex-start',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    backgroundColor: ColorsEnum.ERROR,
   },
   text: {
     fontWeight: '600',
     fontSize: 20,
-    color: colors.SECONDARY_FONT,
+    color: ColorsEnum.SECONDARY_FONT,
     paddingVertical: 12,
   },
   wordText: {
     fontWeight: '600',
     fontSize: 20,
-    color: colors.SECONDARY_FONT,
+    color: ColorsEnum.SECONDARY_FONT,
   },
   headerTitle: {
-    color: colors.PRIMARY_FONT,
+    color: ColorsEnum.PRIMARY_FONT,
   },
   errorTitle: {
     fontWeight: '600',
     fontSize: 16,
     marginBottom: 5,
-    color: colors.PRIMARY_FONT,
+    color: ColorsEnum.PRIMARY_FONT,
   },
   errorText: {
     textAlign: 'center',
-    color: colors.PRIMARY_FONT,
+    color: ColorsEnum.PRIMARY_FONT,
     fontWeight: '500',
   },
   errorIcon: {marginLeft: 32},

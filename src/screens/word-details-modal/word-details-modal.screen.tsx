@@ -4,7 +4,7 @@ import {NativeStackNavigationOptions} from '@react-navigation/native-stack';
 import {View, Text, ActivityIndicator, ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome6';
 import {useFavoritesContext} from '@contexts';
-import {colors} from '@constants';
+import {ColorsEnum} from '@constants';
 import {useSoundPlayer, useWordDetails} from '@hooks';
 import {RootStackParamListType} from '@types';
 import {
@@ -78,23 +78,14 @@ export function WordDetailsModalScreen() {
   if (isLoadingScreen) {
     return (
       <View style={style.containerLoader}>
-        <ActivityIndicator color={colors.SECONDARY} />
+        <ActivityIndicator color={ColorsEnum.SECONDARY} />
       </View>
     );
   }
 
   if (isError) {
     return (
-      <View
-        style={[
-          style.errorContent,
-          style.wordContent,
-          {
-            flexDirection: 'row',
-            justifyContent: 'center',
-            backgroundColor: colors.ERROR,
-          },
-        ]}>
+      <View style={[style.wordContent, style.errorContent]}>
         <View>
           <Text style={style.errorTitle}>Not found the word: {word}</Text>
           <Text style={style.errorText}>Choose another word</Text>
@@ -102,7 +93,7 @@ export function WordDetailsModalScreen() {
 
         <Icon
           style={style.errorIcon}
-          color={colors.SECONDARY}
+          color={ColorsEnum.SECONDARY}
           name="triangle-exclamation"
           size={32}
         />

@@ -3,12 +3,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useHistoryContext} from '@contexts';
 import axios from 'axios';
 import {WordType} from '@types';
+import {StorageKeysEnum} from '@constants';
 
 export const api = axios.create({
   baseURL: 'https://api.dictionaryapi.dev/api/v2/entries/en',
 });
-
-const WORDS_DETAILS_STORAGE_ITEM_KEY = 'words-details';
 
 export function useWordDetails(word: string) {
   const {addWordToHistory} = useHistoryContext();
@@ -23,7 +22,7 @@ export function useWordDetails(word: string) {
         addWordToHistory(word);
 
         const words = await AsyncStorage.getItem(
-          WORDS_DETAILS_STORAGE_ITEM_KEY,
+          StorageKeysEnum.WORDS_DETAILS_LIST,
         );
         const wordsList = JSON.parse(words || '[]') as WordType[];
 
@@ -42,7 +41,7 @@ export function useWordDetails(word: string) {
 
         const newWordsDetails = [newWord, ...wordsList];
         AsyncStorage.setItem(
-          WORDS_DETAILS_STORAGE_ITEM_KEY,
+          StorageKeysEnum.WORDS_DETAILS_LIST,
           JSON.stringify(newWordsDetails),
         );
       } catch (error) {

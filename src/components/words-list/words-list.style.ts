@@ -1,5 +1,5 @@
 import {StyleSheet, Dimensions} from 'react-native';
-import {colors} from '@constants';
+import {ColorsEnum} from '@constants';
 
 const {width} = Dimensions.get('screen');
 
@@ -11,7 +11,7 @@ export default StyleSheet.create({
     flexDirection: 'column',
   },
   containerText: {
-    backgroundColor: colors.SECONDARY,
+    backgroundColor: ColorsEnum.SECONDARY,
     borderRadius: 5,
     paddingVertical: 12,
     paddingHorizontal: 6,
@@ -23,7 +23,7 @@ export default StyleSheet.create({
   text: {
     textAlign: 'center',
     fontWeight: '500',
-    color: colors.SECONDARY_FONT,
+    color: ColorsEnum.SECONDARY_FONT,
   },
   loader: {
     justifyContent: 'center',
@@ -33,6 +33,6 @@ export default StyleSheet.create({
   },
   emptyText: {
     textAlign: 'center',
-    color: colors.PRIMARY_FONT,
+    color: ColorsEnum.PRIMARY_FONT,
   },
 });

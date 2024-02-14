@@ -1,5 +1,7 @@
-import React, {useCallback, useContext} from 'react';
+import React, {useCallback, useContext, useEffect} from 'react';
 import {createContext, useState} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {StorageKeysEnum} from '@constants';
 
 type DefaultValueType = {
   favorites: string[];
@@ -19,16 +21,44 @@ export function FavoritesContextProvider({
 }: FavoritesContextProviderProps) {
   const [favorites, setFavorites] = useState<string[]>([]);
 
+  useEffect(() => {
+    async function getData() {
+      const favoritesList = await AsyncStorage.getItem(
+        StorageKeysEnum.FAVORITES_LIST,
+      );
+
+      if (favoritesList) {
+        setFavorites(JSON.parse(favoritesList));
+      } else {
+        AsyncStorage.setItem(
+          StorageKeysEnum.FAVORITES_LIST,
+          JSON.stringify(favorites),
+        );
+      }
+    }
+
+    getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const handleFavoriteWord = useCallback(
     (favoriteWord: string) => {
       const hasFavoriteWord =
         favorites.findIndex(item => item === favoriteWord) !== -1;
 
+      let newFavoritesList;
+
       if (hasFavoriteWord) {
-        setFavorites(favorites.filter(item => item !== favoriteWord));
+        newFavoritesList = favorites.filter(item => item !== favoriteWord);
       } else {
-        setFavorites([favoriteWord, ...favorites]);
+        newFavoritesList = [favoriteWord, ...favorites];
       }
+
+      setFavorites(newFavoritesList);
+      AsyncStorage.setItem(
+        StorageKeysEnum.FAVORITES_LIST,
+        JSON.stringify(newFavoritesList),
+      );
     },
     [favorites],
   );

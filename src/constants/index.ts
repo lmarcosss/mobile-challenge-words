@@ -4,4 +4,5 @@ const newWords = words as string[];
 
 export {newWords};
 
-export {colors} from './colors';
+export {ColorsEnum} from './colors';
+export {StorageKeysEnum} from './storage-keys';

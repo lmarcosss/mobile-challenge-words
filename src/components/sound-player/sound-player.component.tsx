@@ -4,9 +4,9 @@ import {Slider} from 'react-native-awesome-slider';
 import {useSharedValue} from 'react-native-reanimated';
 import FontAwesome from 'react-native-vector-icons/FontAwesome6';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import {ColorsEnum} from '@constants';
 
 import style from './sound-player.style';
-import {colors} from '@constants';
 
 type SoundPlayerProps = {
   isPlaying: boolean;
@@ -56,7 +56,7 @@ export function SoundPlayer({
       <TouchableOpacity onPress={onPlayPause} style={style.button}>
         <FontAwesome
           name={isPlaying ? 'stop' : 'play'}
-          color={colors.SECONDARY_FONT}
+          color={ColorsEnum.SECONDARY_FONT}
           size={24}
         />
       </TouchableOpacity>
@@ -66,9 +66,9 @@ export function SoundPlayer({
         maximumValue={max}
         disable
         theme={{
-          maximumTrackTintColor: colors.SECONDARY_FONT,
-          minimumTrackTintColor: '#fff',
-          disableMinTrackTintColor: '#fff',
+          maximumTrackTintColor: ColorsEnum.SECONDARY_FONT,
+          minimumTrackTintColor: ColorsEnum.PRIMARY_FONT,
+          disableMinTrackTintColor: ColorsEnum.PRIMARY_FONT,
         }}
       />
     </GestureHandlerRootView>

@@ -1,4 +1,4 @@
-import {colors} from '@constants';
+import {ColorsEnum} from '@constants';
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
@@ -11,11 +11,11 @@ export default StyleSheet.create({
   unavailableContainer: {
     marginTop: 12,
     padding: 8,
-    backgroundColor: colors.ERROR,
+    backgroundColor: ColorsEnum.ERROR,
     borderRadius: 4,
   },
   unavailableText: {
-    color: colors.PRIMARY_FONT,
+    color: ColorsEnum.PRIMARY_FONT,
     fontStyle: 'italic',
     fontSize: 13,
     textAlign: 'center',
