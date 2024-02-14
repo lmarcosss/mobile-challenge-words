@@ -2,7 +2,6 @@ import React from 'react';
 import {render, userEvent, waitFor} from '@testing-library/react-native';
 import {WordsList} from '@components';
 import {newWords} from '@constants';
-// import {words} from '@core';
 
 const wordsWithTenWords = newWords.slice(0, 10);
 
