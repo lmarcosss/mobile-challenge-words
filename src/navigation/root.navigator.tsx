@@ -1,6 +1,5 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {LoginScreen} from '@screens';
 import {MainNavigator} from './main.navigator';
 import {RootStackParamListType} from '@types';
 
@@ -15,13 +14,6 @@ export function RootNavigator() {
         }}
         name="MainStack"
         component={MainNavigator}
-      />
-      <RootStack.Screen
-        name="Login"
-        options={{
-          headerShown: false,
-        }}
-        component={LoginScreen}
       />
     </RootStack.Navigator>
   );
