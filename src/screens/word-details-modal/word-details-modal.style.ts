@@ -17,9 +17,12 @@ export default StyleSheet.create({
     fontWeight: '600',
     fontSize: 20,
     color: colors.SECONDARY_FONT,
+    paddingVertical: 12,
   },
   wordText: {
-    paddingBottom: 12,
+    fontWeight: '600',
+    fontSize: 20,
+    color: colors.SECONDARY_FONT,
   },
   headerTitle: {
     color: colors.PRIMARY_FONT,

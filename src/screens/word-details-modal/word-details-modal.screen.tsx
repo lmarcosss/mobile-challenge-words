@@ -88,8 +88,8 @@ export function WordDetailsModalScreen() {
   return (
     <View style={style.container}>
       <View style={style.wordContent}>
-        <Text style={[style.wordText, style.text]}>{word}</Text>
-        <Text style={style.text}>{phonetic?.text}</Text>
+        <Text style={style.wordText}>{word}</Text>
+        {phonetic?.text && <Text style={style.text}>{phonetic.text}</Text>}
 
         <SoundPlayer
           isAvailable={isAvailable}

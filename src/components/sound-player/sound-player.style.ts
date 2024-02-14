@@ -4,13 +4,12 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
   container: {
     padding: 12,
-    marginTop: 16,
     alignItems: 'center',
     flexDirection: 'row',
   },
   button: {marginRight: 10},
   unavailableContainer: {
-    marginTop: 16,
+    marginTop: 12,
     padding: 8,
     backgroundColor: colors.ERROR,
     borderRadius: 4,
