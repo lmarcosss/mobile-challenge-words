@@ -3,12 +3,15 @@ import {colors} from '@constants';
 
 export default StyleSheet.create({
   container: {padding: 16},
-  containerLoader: {paddingTop: 50},
+  containerLoader: {paddingTop: 70},
   wordContent: {
     backgroundColor: colors.SECONDARY,
     borderRadius: 5,
     alignItems: 'center',
     padding: 24,
+  },
+  errorContent: {
+    margin: 16,
   },
   text: {
     fontWeight: '600',

@@ -2,35 +2,13 @@ import React, {useEffect} from 'react';
 import {useFavoritesContext} from '@contexts';
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import {NativeStackNavigationOptions} from '@react-navigation/native-stack';
-import {View, TouchableOpacity, Text, ActivityIndicator} from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
-import FontAwesome from 'react-native-vector-icons/FontAwesome6';
-import {useWordDetails} from '@hooks';
+import {View, Text, ActivityIndicator} from 'react-native';
 import {colors} from '@constants';
+import {useSoundPlayer, useWordDetails} from '@hooks';
 import {RootStackParamListType} from '@types';
+import {FavoriteButton, GoBackButton, SoundPlayer} from '@components';
 
 import style from './word-details-modal.style';
-
-function BackButton({goBack}: any) {
-  return (
-    <TouchableOpacity onPress={goBack}>
-      <Feather color={colors.PRIMARY_FONT} name="x" size={28} />
-    </TouchableOpacity>
-  );
-}
-
-function FavoriteButton({isFavorite, onFavoriteWord}: any) {
-  return (
-    <TouchableOpacity onPress={onFavoriteWord}>
-      <FontAwesome
-        solid={isFavorite}
-        name="heart"
-        color={colors.PRIMARY_FONT}
-        size={24}
-      />
-    </TouchableOpacity>
-  );
-}
 
 export function WordDetailsModalScreen() {
   const {handleFavoriteWord, favorites} = useFavoritesContext();
@@ -39,6 +17,30 @@ export function WordDetailsModalScreen() {
     useRoute<RouteProp<RootStackParamListType, 'WordDetailsModal'>>();
   const {word} = params;
   const {wordDetails, isLoading, isError} = useWordDetails(word);
+
+  const phonetic = wordDetails?.phonetics.reduce(
+    (accumulator, currentValue) => {
+      if (currentValue?.text) {
+        accumulator = {...accumulator, text: currentValue?.text};
+      }
+
+      if (currentValue?.audio) {
+        accumulator = {...accumulator, audio: currentValue?.audio};
+      }
+
+      return accumulator;
+    },
+    {text: wordDetails?.phonetic},
+  );
+
+  const {
+    isPlaying,
+    currentTime,
+    duration,
+    onPlayPause,
+    isAvailable,
+    isLoading: isLoadingAudio,
+  } = useSoundPlayer(phonetic?.audio);
 
   useEffect(() => {
     const isFavorite = favorites.includes(word);
@@ -51,7 +53,7 @@ export function WordDetailsModalScreen() {
       title: 'Word Details',
       headerTitleStyle: style.headerTitle,
       // eslint-disable-next-line react/no-unstable-nested-components
-      headerLeft: () => <BackButton goBack={goBack} />,
+      headerLeft: () => <GoBackButton goBack={goBack} />,
 
       headerRight: !isError
         ? () => (
@@ -64,7 +66,9 @@ export function WordDetailsModalScreen() {
     } as NativeStackNavigationOptions);
   }, [setOptions, word, goBack, favorites, handleFavoriteWord, isError]);
 
-  if (isLoading) {
+  const isLoadingScreen = isLoading || isLoadingAudio;
+
+  if (isLoadingScreen) {
     return (
       <View style={style.containerLoader}>
         <ActivityIndicator color={colors.SECONDARY} />
@@ -72,20 +76,28 @@ export function WordDetailsModalScreen() {
     );
   }
 
+  if (isError) {
+    return (
+      <View style={[style.wordContent, style.errorContent]}>
+        <Text style={style.errorTitle}>Not found the word: {word}</Text>
+        <Text style={style.errorText}>Choose another word</Text>
+      </View>
+    );
+  }
+
   return (
     <View style={style.container}>
       <View style={style.wordContent}>
-        {isError ? (
-          <>
-            <Text style={style.errorTitle}>Not found the word: {word}</Text>
-            <Text style={style.errorText}>Choose another word</Text>
-          </>
-        ) : (
-          <>
-            <Text style={[style.wordText, style.text]}>{word}</Text>
-            <Text style={style.text}>{wordDetails?.phonetic}</Text>
-          </>
-        )}
+        <Text style={[style.wordText, style.text]}>{word}</Text>
+        <Text style={style.text}>{phonetic?.text}</Text>
+
+        <SoundPlayer
+          isAvailable={isAvailable}
+          isPlaying={isPlaying}
+          currentTime={currentTime}
+          duration={duration}
+          onPlayPause={onPlayPause}
+        />
       </View>
     </View>
   );
