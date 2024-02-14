@@ -1137,11 +1137,7 @@ PODS:
     - RNSound/Core (= 0.11.2)
   - RNSound/Core (0.11.2):
     - React-Core
-  - simdjson (3.1.0-wmelon1)
   - SocketRocket (0.6.1)
-  - WatermelonDB (0.27.1):
-    - React
-    - simdjson
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -1224,8 +1220,6 @@ DEPENDENCIES:
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSound (from `../node_modules/react-native-sound`)
-  - "simdjson (from `../node_modules/@nozbe/simdjson`)"
-  - "WatermelonDB (from `../node_modules/@nozbe/watermelondb`)"
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -1354,10 +1348,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-screens"
   RNSound:
     :path: "../node_modules/react-native-sound"
-  simdjson:
-    :path: "../node_modules/@nozbe/simdjson"
-  WatermelonDB:
-    :path: "../node_modules/@nozbe/watermelondb"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -1428,11 +1418,9 @@ SPEC CHECKSUMS:
   RNReanimated: 5589be82dc26b3f94738eb7c6b1f942787532b25
   RNScreens: b582cb834dc4133307562e930e8fa914b8c04ef2
   RNSound: 6c156f925295bdc83e8e422e7d8b38d33bc71852
-  simdjson: e6bfae9ce4bcdc80452d388d593816f1ca2106f3
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
-  WatermelonDB: 842d22ba555425aa9f3ce551239a001200c539bc
   Yoga: 64cd2a583ead952b0315d5135bf39e053ae9be70
 
-PODFILE CHECKSUM: 66ce17ab4f106e7560da39c7b3f740b12ac0dc94
+PODFILE CHECKSUM: 0c06ba50b8db1949592979078561d299bba4ff6a
 
 COCOAPODS: 1.13.0
