@@ -1,4 +1,3 @@
-export {WordContextProvider, useWordContext} from './word.context';
 export {
   FavoritesContextProvider,
   useFavoritesContext,

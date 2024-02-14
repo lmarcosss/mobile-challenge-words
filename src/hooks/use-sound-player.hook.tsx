@@ -4,6 +4,8 @@ import Sound from 'react-native-sound';
 
 Sound.setCategory('Playback');
 
+const DELAY_TIME_IN_MS = 70;
+
 export function useSoundPlayer(wordSound?: string) {
   const [sound, setSound] = useState<Sound>();
   const [isPlaying, setPlaying] = useState(false);
@@ -42,9 +44,11 @@ export function useSoundPlayer(wordSound?: string) {
 
       intervalRef.current = setInterval(() => {
         sound.getCurrentTime(seconds => {
-          setCurrentTime(seconds);
+          setCurrentTime(
+            previousCurrentTime => previousCurrentTime * 0.2 + seconds,
+          );
         });
-      }, 30);
+      }, DELAY_TIME_IN_MS);
     }
 
     return () => {
