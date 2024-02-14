@@ -1,4 +1,5 @@
 import {useEffect, useRef, useState} from 'react';
+import {Alert} from 'react-native';
 import Sound from 'react-native-sound';
 
 Sound.setCategory('Playback');
@@ -18,11 +19,10 @@ export function useSoundPlayer(wordSound?: string) {
     if (wordSound) {
       const newSound = new Sound(wordSound, undefined, error => {
         if (error) {
-          console.log('failed to load the sound', error);
+          Alert.alert('failed to load the sound', error);
           setAvailable(false);
           setLoading(false);
         } else {
-          console.log('success to load the sound');
           setDuration(newSound.getDuration());
           setAvailable(true);
           setLoading(false);
@@ -65,10 +65,9 @@ export function useSoundPlayer(wordSound?: string) {
 
       sound.play((success: boolean) => {
         if (success) {
-          console.log('successfully finished playing');
           setPlaying(false);
         } else {
-          console.log('playback failed due to audio decoding errors');
+          Alert.alert('playback failed due to audio decoding errors');
         }
       });
     }
