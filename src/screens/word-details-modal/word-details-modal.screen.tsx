@@ -102,7 +102,7 @@ export function WordDetailsModalScreen() {
   }
 
   return (
-    <ScrollView style={style.container}>
+    <ScrollView contentContainerStyle={style.container}>
       <View style={style.wordContent}>
         <Text style={style.wordText}>{word}</Text>
         {phonetic?.text && <Text style={style.text}>{phonetic.text}</Text>}

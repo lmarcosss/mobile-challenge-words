@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 import {ColorsEnum} from '@constants';
 
 export default StyleSheet.create({
-  container: {padding: 16},
+  container: {padding: 16, paddingBottom: 36},
   containerLoader: {paddingTop: 70},
   wordContent: {
     backgroundColor: ColorsEnum.SECONDARY,
