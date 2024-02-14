@@ -12,8 +12,8 @@ export default StyleSheet.create({
   },
   errorContent: {
     margin: 16,
-    alignItems: 'flex-start',
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: ColorsEnum.ERROR,
   },
