@@ -1,7 +1,14 @@
+export type MeaningType = {
+  partOfSpeech: string;
+  definitions: {
+    definition: string;
+    example: string;
+  }[];
+};
 export type WordType = {
   phonetic?: string;
   word: string;
-  meanings: any;
+  meanings?: MeaningType[];
   phonetics: {
     text?: string;
     audio?: string;

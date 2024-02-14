@@ -2,19 +2,25 @@ import React, {useEffect} from 'react';
 import {useFavoritesContext} from '@contexts';
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import {NativeStackNavigationOptions} from '@react-navigation/native-stack';
-import {View, Text, ActivityIndicator} from 'react-native';
+import {View, Text, ActivityIndicator, ScrollView} from 'react-native';
 import {colors} from '@constants';
 import {useSoundPlayer, useWordDetails} from '@hooks';
 import {RootStackParamListType} from '@types';
-import {FavoriteButton, GoBackButton, SoundPlayer} from '@components';
+import {
+  FavoriteButton,
+  GoBackButton,
+  MeaningsList,
+  SoundPlayer,
+} from '@components';
+
+type RouteProps = RouteProp<RootStackParamListType, 'WordDetailsModal'>;
 
 import style from './word-details-modal.style';
 
 export function WordDetailsModalScreen() {
-  const {handleFavoriteWord, favorites} = useFavoritesContext();
   const {setOptions, goBack} = useNavigation();
-  const {params} =
-    useRoute<RouteProp<RootStackParamListType, 'WordDetailsModal'>>();
+  const {handleFavoriteWord, favorites} = useFavoritesContext();
+  const {params} = useRoute<RouteProps>();
   const {word} = params;
   const {wordDetails, isLoading, isError} = useWordDetails(word);
 
@@ -42,6 +48,8 @@ export function WordDetailsModalScreen() {
     isLoading: isLoadingAudio,
   } = useSoundPlayer(phonetic?.audio);
 
+  const isLoadingScreen = isLoading || isLoadingAudio;
+
   useEffect(() => {
     const isFavorite = favorites.includes(word);
 
@@ -66,8 +74,6 @@ export function WordDetailsModalScreen() {
     } as NativeStackNavigationOptions);
   }, [setOptions, word, goBack, favorites, handleFavoriteWord, isError]);
 
-  const isLoadingScreen = isLoading || isLoadingAudio;
-
   if (isLoadingScreen) {
     return (
       <View style={style.containerLoader}>
@@ -86,7 +92,7 @@ export function WordDetailsModalScreen() {
   }
 
   return (
-    <View style={style.container}>
+    <ScrollView style={style.container}>
       <View style={style.wordContent}>
         <Text style={style.wordText}>{word}</Text>
         {phonetic?.text && <Text style={style.text}>{phonetic.text}</Text>}
@@ -99,6 +105,8 @@ export function WordDetailsModalScreen() {
           onPlayPause={onPlayPause}
         />
       </View>
-    </View>
+
+      <MeaningsList meanings={wordDetails?.meanings} />
+    </ScrollView>
   );
 }
