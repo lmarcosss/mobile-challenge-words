@@ -21,8 +21,8 @@ export function MeaningsList({meanings}: MeaningsListProps) {
           <Text style={style.partOfSpeech} key={index}>
             {meaning.partOfSpeech}:{' '}
             <Text style={style.definitions}>
-              {meaning.definitions.map(item => (
-                <Text>
+              {meaning.definitions.map((item, definitionIndex) => (
+                <Text key={definitionIndex}>
                   {item.definition}
                   {'\n'}
                 </Text>

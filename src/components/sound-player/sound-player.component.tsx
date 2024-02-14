@@ -55,12 +55,11 @@ export function SoundPlayer({
     <GestureHandlerRootView style={style.container}>
       <TouchableOpacity onPress={onPlayPause} style={style.button}>
         <FontAwesome
-          name={isPlaying ? 'pause' : 'play'}
+          name={isPlaying ? 'stop' : 'play'}
           color={colors.SECONDARY_FONT}
           size={24}
         />
       </TouchableOpacity>
-
       <Slider
         progress={progress}
         minimumValue={min}

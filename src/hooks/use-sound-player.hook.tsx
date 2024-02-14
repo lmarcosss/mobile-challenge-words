@@ -58,7 +58,7 @@ export function useSoundPlayer(wordSound?: string) {
     }
 
     if (isPlaying) {
-      sound.pause();
+      sound.stop();
       setPlaying(false);
     } else {
       setPlaying(true);
