@@ -5,6 +5,10 @@ export default StyleSheet.create({
   backgroundStyle: {
     backgroundColor: colors.PRIMARY,
   },
+  headerStyle: {
+    backgroundColor: colors.PRIMARY,
+    alignItems: 'center',
+  },
   tabBarIndicatorStyle: {
     backgroundColor: colors.SECONDARY,
   },

@@ -1,9 +1,9 @@
 export type WordType = {
-  phonetic: string;
+  phonetic?: string;
   word: string;
   meanings: any;
   phonetics: {
-    text: string;
+    text?: string;
     audio?: string;
   }[];
 };

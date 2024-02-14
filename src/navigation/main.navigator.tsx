@@ -33,7 +33,8 @@ export function MainNavigator() {
               component={WordDetailsModalScreen}
               options={{
                 presentation: 'modal',
-                headerStyle: style.backgroundStyle,
+                headerStyle: style.headerStyle,
+                headerTitleAlign: 'center',
               }}
             />
           </MainStack.Navigator>
