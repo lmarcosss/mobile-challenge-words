@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
-import {useFavoritesContext} from '@contexts';
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import {NativeStackNavigationOptions} from '@react-navigation/native-stack';
 import {View, Text, ActivityIndicator, ScrollView} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome6';
+import {useFavoritesContext} from '@contexts';
 import {colors} from '@constants';
 import {useSoundPlayer, useWordDetails} from '@hooks';
 import {RootStackParamListType} from '@types';
@@ -84,9 +85,27 @@ export function WordDetailsModalScreen() {
 
   if (isError) {
     return (
-      <View style={[style.wordContent, style.errorContent]}>
-        <Text style={style.errorTitle}>Not found the word: {word}</Text>
-        <Text style={style.errorText}>Choose another word</Text>
+      <View
+        style={[
+          style.errorContent,
+          style.wordContent,
+          {
+            flexDirection: 'row',
+            justifyContent: 'center',
+            backgroundColor: colors.ERROR,
+          },
+        ]}>
+        <View>
+          <Text style={style.errorTitle}>Not found the word: {word}</Text>
+          <Text style={style.errorText}>Choose another word</Text>
+        </View>
+
+        <Icon
+          style={style.errorIcon}
+          color={colors.SECONDARY}
+          name="triangle-exclamation"
+          size={32}
+        />
       </View>
     );
   }

@@ -12,6 +12,8 @@ export default StyleSheet.create({
   },
   errorContent: {
     margin: 16,
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
   },
   text: {
     fontWeight: '600',
@@ -28,10 +30,15 @@ export default StyleSheet.create({
     color: colors.PRIMARY_FONT,
   },
   errorTitle: {
-    textAlign: 'center',
     fontWeight: '600',
     fontSize: 16,
     marginBottom: 5,
+    color: colors.PRIMARY_FONT,
   },
-  errorText: {textAlign: 'center'},
+  errorText: {
+    textAlign: 'center',
+    color: colors.PRIMARY_FONT,
+    fontWeight: '500',
+  },
+  errorIcon: {marginLeft: 32},
 });
