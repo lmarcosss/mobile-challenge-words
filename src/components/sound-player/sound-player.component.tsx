@@ -1,9 +1,12 @@
 import React, {useEffect} from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import {Text, View} from 'react-native';
 import {Slider} from 'react-native-awesome-slider';
 import {useSharedValue} from 'react-native-reanimated';
 import FontAwesome from 'react-native-vector-icons/FontAwesome6';
-import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import {
+  GestureHandlerRootView,
+  TouchableOpacity,
+} from 'react-native-gesture-handler';
 import {ColorsEnum} from '@constants';
 
 import style from './sound-player.style';
@@ -17,6 +20,8 @@ type SoundPlayerProps = {
 };
 
 const roundValue = (value: number) => Number(value.toPrecision(3));
+
+const renderBubble = () => <View />;
 
 export function SoundPlayer({
   isPlaying,
@@ -43,7 +48,7 @@ export function SoundPlayer({
 
   if (!isAvailable) {
     return (
-      <View style={style.unavailableContainer}>
+      <View testID="sound-player-error" style={style.unavailableContainer}>
         <Text style={style.unavailableText}>
           Audio for this word is not available! ⚠️
         </Text>
@@ -52,8 +57,11 @@ export function SoundPlayer({
   }
 
   return (
-    <GestureHandlerRootView style={style.container}>
-      <TouchableOpacity onPress={onPlayPause} style={style.button}>
+    <GestureHandlerRootView testID="sound-player" style={style.container}>
+      <TouchableOpacity
+        testID="sound-player-button"
+        onPress={onPlayPause}
+        style={style.button}>
         <FontAwesome
           name={isPlaying ? 'stop' : 'play'}
           color={ColorsEnum.SECONDARY_FONT}
@@ -70,6 +78,7 @@ export function SoundPlayer({
           minimumTrackTintColor: ColorsEnum.PRIMARY_FONT,
           disableMinTrackTintColor: ColorsEnum.PRIMARY_FONT,
         }}
+        renderBubble={renderBubble}
       />
     </GestureHandlerRootView>
   );

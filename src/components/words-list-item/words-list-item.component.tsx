@@ -1,14 +1,14 @@
 import React, {memo} from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 
-import style from './words-list.style';
+import style from './words-list-item.style';
 
-type WordListItemProps = {
+type WordsListItemProps = {
   item: string;
   onPress(item: string): void;
 };
 
-function WordListItemComponent({item, onPress}: WordListItemProps) {
+function WordsListItemComponent({item, onPress}: WordsListItemProps) {
   return (
     <TouchableOpacity
       style={style.containerText}
@@ -19,4 +19,4 @@ function WordListItemComponent({item, onPress}: WordListItemProps) {
   );
 }
 
-export const WordListItem = memo(WordListItemComponent);
+export const WordsListItem = memo(WordsListItemComponent);

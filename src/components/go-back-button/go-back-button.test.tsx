@@ -24,6 +24,7 @@ describe('GoBackButton', () => {
 
     act(() => {
       userEvent.press(favoriteButton);
+      jest.advanceTimersByTime(500);
     });
 
     waitFor(() => {

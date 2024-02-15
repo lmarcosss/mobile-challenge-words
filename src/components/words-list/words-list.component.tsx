@@ -2,7 +2,7 @@ import React from 'react';
 import {ActivityIndicator, FlatList, Text} from 'react-native';
 import style from './words-list.style';
 import {useNavigation} from '@react-navigation/native';
-import {WordListItem} from './words-list-item.component';
+import {WordsListItem} from '../words-list-item/words-list-item.component';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamListType} from '@types';
 
@@ -35,7 +35,7 @@ export function WordsList({
       contentContainerStyle={style.container}
       testID="words-list"
       showsVerticalScrollIndicator={false}
-      renderItem={({item}) => <WordListItem item={item} onPress={onPress} />}
+      renderItem={({item}) => <WordsListItem item={item} onPress={onPress} />}
       onEndReached={hasInfiniteScroll ? onLoadMoreItems : undefined}
       onEndReachedThreshold={hasInfiniteScroll ? 0.1 : undefined}
       ListFooterComponent={

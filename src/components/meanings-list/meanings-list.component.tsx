@@ -5,20 +5,20 @@ import {MeaningType} from '@types';
 import style from './meanings-list.style';
 
 type MeaningsListProps = {
-  meanings?: MeaningType[];
+  meanings: MeaningType[];
 };
 
 export function MeaningsList({meanings}: MeaningsListProps) {
-  if (!meanings?.length) {
+  if (!meanings.length) {
     return null;
   }
 
   return (
-    <View style={style.container}>
+    <View testID="meanings-list" style={style.container}>
       <Text style={style.title}>Meanings</Text>
       <View style={style.content}>
         {meanings.map((meaning, index) => (
-          <Text style={style.partOfSpeech} key={index}>
+          <Text testID="meanings-item" style={style.partOfSpeech} key={index}>
             {meaning.partOfSpeech}:{' '}
             <Text style={style.definitions}>
               {meaning.definitions.map((item, definitionIndex) => (
