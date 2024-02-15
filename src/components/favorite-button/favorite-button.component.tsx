@@ -3,9 +3,17 @@ import {ColorsEnum} from '@constants';
 import {TouchableOpacity} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome6';
 
-export function FavoriteButton({isFavorite, onFavoriteWord}: any) {
+type FavoriteButtonType = {
+  isFavorite: boolean;
+  onFavoriteWord(): void;
+};
+
+export function FavoriteButton({
+  isFavorite,
+  onFavoriteWord,
+}: FavoriteButtonType) {
   return (
-    <TouchableOpacity onPress={onFavoriteWord}>
+    <TouchableOpacity testID="favorite-button" onPress={onFavoriteWord}>
       <FontAwesome
         solid={isFavorite}
         name="heart"
