@@ -64,6 +64,7 @@ export function SoundPlayer({
         progress={progress}
         minimumValue={min}
         maximumValue={max}
+        disable
         theme={{
           maximumTrackTintColor: ColorsEnum.SECONDARY_FONT,
           minimumTrackTintColor: ColorsEnum.PRIMARY_FONT,
