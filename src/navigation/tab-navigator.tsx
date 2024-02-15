@@ -13,12 +13,7 @@ export function TabNavigator() {
 
   return (
     <Tab.Navigator
-      style={{
-        paddingTop: insets.top,
-        paddingBottom: insets.bottom,
-        paddingLeft: insets.left,
-        paddingRight: insets.right,
-      }}
+      style={{paddingTop: insets.top}}
       sceneContainerStyle={style.backgroundStyle}
       screenOptions={{
         tabBarStyle: style.backgroundStyle,
