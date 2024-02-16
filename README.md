@@ -79,6 +79,10 @@ npm run test
 
 ## Evidência:
 
-### iOS:
+### iOS
 
-[![Everything Is AWESOME](https://img.youtube.com/vi/bqqHaNvUrs8/0.jpg)](https://www.youtube.com/watch?v=bqqHaNvUrs8 'Everything Is AWESOME')
+[![iOS](https://img.youtube.com/vi/bqqHaNvUrs8/0.jpg)](https://www.youtube.com/watch?v=bqqHaNvUrs8 'iOS')
+
+### Android
+
+[![Android](https://img.youtube.com/vi/rrRBF6_tmLc/0.jpg)](https://www.youtube.com/watch?v=rrRBF6_tmLc 'Android')
