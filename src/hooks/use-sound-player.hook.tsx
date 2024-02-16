@@ -45,7 +45,7 @@ export function useSoundPlayer(wordSound?: string) {
       intervalRef.current = setInterval(() => {
         sound.getCurrentTime(seconds => {
           setCurrentTime(
-            previousCurrentTime => previousCurrentTime * 0.2 + seconds,
+            previousCurrentTime => previousCurrentTime * 0.3 + seconds,
           );
         });
       }, DELAY_TIME_IN_MS);
